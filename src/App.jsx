@@ -2,6 +2,7 @@ import Button from "./components/Button/Button";
 import Form from "./components/Form/Form";
 import Header from "./components/Header/Header";
 import Input from "./components/Input/Input";
+import Menu from "./components/Menu/Menu";
 
 function App() {
 	return (
@@ -24,6 +25,8 @@ function App() {
 					<Input type="text" placeholder="Your full name" />
 					<Button text="Login" />
 				</Form>
+
+				<Menu />
 			</main>
 		</div>
 	);
