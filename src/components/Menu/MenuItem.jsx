@@ -37,14 +37,12 @@ const MenuItem = ({ item }) => {
 						<>
 							<p className="pizza__price">€{item.unitPrice}</p>
 
-							{addToCart ? (
+							{addToCart && (
 								<div className="pizza__count">
 									<button onClick={subtractCountHandler}>-</button>
 									<span>{count}</span>
 									<button onClick={addCountHandler}>+</button>
 								</div>
-							) : (
-								<></>
 							)}
 
 							{count > 0 ? (
