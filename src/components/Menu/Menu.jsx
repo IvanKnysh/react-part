@@ -4,9 +4,12 @@ import MenuItem from "./MenuItem";
 const Menu = () => {
 	const [pizzas, setPizzas] = useState([]);
 	const [error, setError] = useState("");
+	const [isLoading, setIsLoading] = useState(false);
 
 	useEffect(() => {
 		const getAllPizzas = async () => {
+			setIsLoading(true);
+
 			try {
 				const response = await fetch(
 					"https://react-fast-pizza-api.onrender.com/api/menu"
@@ -20,6 +23,8 @@ const Menu = () => {
 				setPizzas(data);
 			} catch (err) {
 				setError(err.message);
+			} finally {
+				setIsLoading(false);
 			}
 		};
 
@@ -27,8 +32,9 @@ const Menu = () => {
 	}, []);
 
 	return (
-		<ul>
+		<ul className="menu">
 			{error && <p>{error}</p>}
+			{isLoading && <p>Loading...</p>}
 			{pizzas.map((item) => (
 				<MenuItem key={item.id} item={item} />
 			))}
