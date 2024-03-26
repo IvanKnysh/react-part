@@ -220,6 +220,10 @@ input:focus {
 }
 
 /* Menu */
+.menu {
+	margin-top: 100px;
+}
+
 .pizza {
 	display: flex;
 	gap: 16px;
@@ -265,4 +269,16 @@ input:focus {
 
 .pizza__count span {
 	margin: 0 10px;
+}
+
+/* nav */
+nav {
+	display: flex;
+	gap: 0 20px;
+}
+
+nav a {
+	text-decoration: none;
+	font-size: 18px;
+	color: rgb(68, 64, 60);
 }

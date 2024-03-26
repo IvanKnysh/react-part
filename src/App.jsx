@@ -1,8 +1,9 @@
-import Button from "./components/Button/Button";
-import Form from "./components/Form/Form";
+import { Routes, Route } from "react-router-dom";
+import HomePage from "./pages/HomePage";
+import MenuPage from "./pages/MenuPage";
+import AuthPage from "./pages/AuthPage";
+
 import Header from "./components/Header/Header";
-import Input from "./components/Input/Input";
-import Menu from "./components/Menu/Menu";
 
 function App() {
 	return (
@@ -10,23 +11,11 @@ function App() {
 			<Header />
 
 			<main className="content">
-				<h1 className="title">
-					The best pizza.
-					<br />
-					<span className="text-yellow">
-						Straight out of the oven, straight to you.
-					</span>
-				</h1>
-				<p className="sub-title">
-					👋 Welcome! Please start by telling us your name:
-				</p>
-
-				<Form>
-					<Input type="text" placeholder="Your full name" />
-					<Button text="Login" />
-				</Form>
-
-				<Menu />
+				<Routes>
+					<Route path="/" element={<HomePage />} />
+					<Route path="/menu" element={<MenuPage />} />
+					<Route path="/auth" element={<AuthPage />} />
+				</Routes>
 			</main>
 		</div>
 	);
