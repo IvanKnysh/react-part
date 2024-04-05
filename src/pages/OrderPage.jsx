@@ -31,7 +31,7 @@ const OrderPage = () => {
 
 	return (
 		<>
-			<h1 className="title">Rady to order? Let's go!</h1>
+			<h1 className="title">Rady to order? Let`s go!</h1>
 
 			<form onSubmit={handleSubmit(onSubmit)}>
 				<div className="formItem">
