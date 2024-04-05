@@ -282,3 +282,30 @@ nav a {
 	font-size: 18px;
 	color: rgb(68, 64, 60);
 }
+
+/* Form */
+span.error {
+	display: block;
+	width: 100%;
+	font-size: 12px;
+	color: red;
+	margin-top: 10px;
+}
+
+.formItem {
+	display: flex;
+	align-items: center;
+	flex-wrap: wrap;
+	margin-bottom: 20px;
+}
+
+.formItem.checkbox label {
+	flex-wrap: nowrap;
+	width: initial;
+	margin-left: 10px;
+}
+
+form label {
+	display: block;
+	width: 150px;
+}
