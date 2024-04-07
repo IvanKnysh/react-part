@@ -3,6 +3,7 @@ import HomePage from "./pages/HomePage";
 import MenuPage from "./pages/MenuPage";
 import AuthPage from "./pages/AuthPage";
 import OrderPage from "./pages/OrderPage";
+import PostsPage from "./pages/PostsPage";
 
 import Header from "./components/Header/Header";
 
@@ -15,6 +16,7 @@ function App() {
 				<Routes>
 					<Route path="/" element={<HomePage />} />
 					<Route path="/menu" element={<MenuPage />} />
+					<Route path="/posts" element={<PostsPage />} />
 					<Route path="/auth" element={<AuthPage />} />
 					<Route path="/order/new" element={<OrderPage />} />
 				</Routes>

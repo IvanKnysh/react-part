@@ -309,3 +309,43 @@ form label {
 	display: block;
 	width: 150px;
 }
+
+/* Posts */
+h1.post-title {
+	font-size: 25px;
+	font-weight: 700;
+	margin-top: 100px;
+}
+
+.posts-wrapper {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 10px;
+	max-width: 800px;
+	margin-top: 30px;
+	margin-bottom: 50px;
+}
+
+.posts-wrapper .post {
+	width: calc((100% / 3) - 10px);
+	background: #ddd;
+	border-radius: 12px;
+	padding: 15px;
+	border: 1px solid #c4c4c4;
+}
+
+.posts-wrapper .post h3 {
+	text-align: center;
+	font-size: 18px;
+	font-weight: 700;
+	margin-bottom: 10px;
+}
+
+.posts-wrapper .post p {
+	font-size: 14px;
+}
+
+.error-message {
+	color: red;
+	font-size: 18px;
+}
