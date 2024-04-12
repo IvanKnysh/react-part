@@ -349,3 +349,20 @@ h1.post-title {
 	color: red;
 	font-size: 18px;
 }
+
+.counter {
+	border: 1px solid #ddd;
+	border-radius: 12px;
+	padding: 20px 0;
+	margin-top: 50px;
+}
+
+.counter button {
+	margin: 10px 5px;
+}
+
+.counter p {
+	font-size: 18px;
+	font-weight: 700;
+	margin-bottom: 10px;
+}

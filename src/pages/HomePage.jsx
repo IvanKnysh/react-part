@@ -1,4 +1,5 @@
 import Button from "../components/Button/Button";
+import Counter from "../components/Counter/Counter";
 import Form from "../components/Form/Form";
 import Input from "../components/Input/Input";
 
@@ -20,6 +21,10 @@ const HomePage = () => {
 				<Input type="text" placeholder="Your full name" />
 				<Button text="Login" />
 			</Form>
+
+			<hr />
+
+			<Counter />
 		</>
 	);
 };
