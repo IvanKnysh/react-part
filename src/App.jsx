@@ -1,9 +1,11 @@
+import { Suspense, lazy } from "react";
 import { Routes, Route } from "react-router-dom";
-import HomePage from "./pages/HomePage";
-import MenuPage from "./pages/MenuPage";
-import AuthPage from "./pages/AuthPage";
-import OrderPage from "./pages/OrderPage";
-import PostsPage from "./pages/PostsPage";
+
+const HomePage = lazy(() => import("./pages/HomePage"));
+const MenuPage = lazy(() => import("./pages/MenuPage"));
+const AuthPage = lazy(() => import("./pages/AuthPage"));
+const OrderPage = lazy(() => import("./pages/OrderPage"));
+const PostsPage = lazy(() => import("./pages/PostsPage"));
 
 import Header from "./components/Header/Header";
 
@@ -14,11 +16,47 @@ function App() {
 
 			<main className="content">
 				<Routes>
-					<Route path="/" element={<HomePage />} />
-					<Route path="/menu" element={<MenuPage />} />
-					<Route path="/posts" element={<PostsPage />} />
-					<Route path="/auth" element={<AuthPage />} />
-					<Route path="/order/new" element={<OrderPage />} />
+					<Route
+						path="/"
+						element={
+							<Suspense fallback={<h1>Lazy Loading...</h1>}>
+								<HomePage />
+							</Suspense>
+						}
+					/>
+
+					<Route
+						path="/menu"
+						element={
+							<Suspense fallback={<h1>Lazy Loading...</h1>}>
+								<MenuPage />
+							</Suspense>
+						}
+					/>
+					<Route
+						path="/posts"
+						element={
+							<Suspense fallback={<h1>Lazy Loading...</h1>}>
+								<PostsPage />
+							</Suspense>
+						}
+					/>
+					<Route
+						path="/auth"
+						element={
+							<Suspense fallback={<h1>Lazy Loading...</h1>}>
+								<AuthPage />
+							</Suspense>
+						}
+					/>
+					<Route
+						path="/order/new"
+						element={
+							<Suspense fallback={<h1>Lazy Loading...</h1>}>
+								<OrderPage />
+							</Suspense>
+						}
+					/>
 				</Routes>
 			</main>
 		</div>
