@@ -40,6 +40,7 @@ export const pizzaSlice = createSlice({
 				return total + item.qty * item.unitPrice;
 			}, 0);
 
+			// totalItems
 			state.totalItems = state.items.reduce((total, item) => {
 				return total + item.qty;
 			}, 0);
