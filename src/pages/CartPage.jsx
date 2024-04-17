@@ -31,7 +31,7 @@ const CartPage = () => {
 					))}
 				<div className="row">
 					<div className="col">Quantity</div>
-					<div className="col">{data.items.length}</div>
+					<div className="col">{data.totalItems}</div>
 				</div>
 				<div className="row">
 					<div className="col">Total</div>
