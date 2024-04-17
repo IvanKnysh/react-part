@@ -1,27 +1,11 @@
-import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { addToCart } from "../../redux/slices/pizzaSlice.js";
 
 const MenuItem = ({ item }) => {
-	const [count, setCount] = useState(0);
-	const [addToCart, setAddToCart] = useState(false);
+	const dispatch = useDispatch();
 
-	const subtractCountHandler = () => {
-		setCount((prevState) =>
-			prevState == 1 ? deleteCountHandler() : prevState - 1
-		);
-	};
-
-	const addCountHandler = () => {
-		setCount((prevState) => prevState + 1);
-	};
-
-	const deleteCountHandler = () => {
-		setCount(0);
-		setAddToCart(false);
-	};
-
-	const addToCartHandler = () => {
-		setAddToCart(true);
-		addCountHandler();
+	const addToCartHandler = (item) => {
+		dispatch(addToCart(item));
 	};
 
 	return (
@@ -37,23 +21,9 @@ const MenuItem = ({ item }) => {
 						<>
 							<p className="pizza__price">€{item.unitPrice}</p>
 
-							{addToCart && (
-								<div className="pizza__count">
-									<button onClick={subtractCountHandler}>-</button>
-									<span>{count}</span>
-									<button onClick={addCountHandler}>+</button>
-								</div>
-							)}
-
-							{count > 0 ? (
-								<button className="button" onClick={deleteCountHandler}>
-									Delete
-								</button>
-							) : (
-								<button className="button" onClick={addToCartHandler}>
-									Add to cart
-								</button>
-							)}
+							<button className="button" onClick={() => addToCartHandler(item)}>
+								Add to cart
+							</button>
 						</>
 					)}
 				</div>

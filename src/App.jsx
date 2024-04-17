@@ -6,6 +6,7 @@ const MenuPage = lazy(() => import("./pages/MenuPage"));
 const AuthPage = lazy(() => import("./pages/AuthPage"));
 const OrderPage = lazy(() => import("./pages/OrderPage"));
 const PostsPage = lazy(() => import("./pages/PostsPage"));
+const CartPage = lazy(() => import("./pages/CartPage"));
 
 import Header from "./components/Header/Header";
 
@@ -54,6 +55,14 @@ function App() {
 						element={
 							<Suspense fallback={<h1>Lazy Loading...</h1>}>
 								<OrderPage />
+							</Suspense>
+						}
+					/>
+					<Route
+						path="/cart"
+						element={
+							<Suspense fallback={<h1>Lazy Loading...</h1>}>
+								<CartPage />
 							</Suspense>
 						}
 					/>
