@@ -12,16 +12,7 @@ const OrderIdPage = () => {
 			<div>Priority Price: €{order.priorityPrice}</div>
 			<div>Priority: {order.priority ? "Yes" : "No"}</div>
 
-			<h2
-				style={{
-					marginTop: 50,
-					marginBottom: 10,
-					fontSize: 20,
-					fontWeight: 700,
-				}}
-			>
-				Cart
-			</h2>
+			<h2>Cart</h2>
 			<ul>
 				{order.cart.map((item) => (
 					<div key={item.pizzaId}>
