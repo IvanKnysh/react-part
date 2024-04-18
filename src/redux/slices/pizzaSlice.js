@@ -4,6 +4,7 @@ const initialState = {
 	items: [],
 	totalPrice: 0,
 	totalItems: 0,
+	orderData: null,
 };
 
 export const pizzaSlice = createSlice({
@@ -45,9 +46,12 @@ export const pizzaSlice = createSlice({
 				return total + item.qty;
 			}, 0);
 		},
+		orderData: (state, action) => {
+			state.orderData = action.payload;
+		},
 	},
 });
 
-export const { addToCart, removeFromCart } = pizzaSlice.actions;
+export const { addToCart, removeFromCart, orderData } = pizzaSlice.actions;
 
 export default pizzaSlice.reducer;

@@ -5,6 +5,7 @@ const HomePage = lazy(() => import("./pages/HomePage"));
 const MenuPage = lazy(() => import("./pages/MenuPage"));
 const AuthPage = lazy(() => import("./pages/AuthPage"));
 const OrderPage = lazy(() => import("./pages/OrderPage"));
+const OrderIdPage = lazy(() => import("./pages/OrderIdPage"));
 const PostsPage = lazy(() => import("./pages/PostsPage"));
 const CartPage = lazy(() => import("./pages/CartPage"));
 
@@ -55,6 +56,14 @@ function App() {
 						element={
 							<Suspense fallback={<h1>Lazy Loading...</h1>}>
 								<OrderPage />
+							</Suspense>
+						}
+					/>
+					<Route
+						path="/order/:id"
+						element={
+							<Suspense fallback={<h1>Lazy Loading...</h1>}>
+								<OrderIdPage />
 							</Suspense>
 						}
 					/>
