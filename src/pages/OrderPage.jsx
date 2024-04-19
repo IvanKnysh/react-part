@@ -2,7 +2,7 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { useSelector, useDispatch } from "react-redux";
-import { useEffect, useState } from "react";
+import { useState, useMemo } from "react";
 import { useNavigate } from "react-router-dom";
 import { orderData } from "../redux/slices/pizzaSlice";
 
@@ -13,23 +13,20 @@ const schema = yup.object().shape({
 });
 
 const OrderPage = () => {
-	const [formData, setFormData] = useState({});
 	const [formError, setFormError] = useState("");
 	const pizzas = useSelector((state) => state.pizza);
 	const navigate = useNavigate();
 	const dispatch = useDispatch();
 
-	const cartData = [];
-
-	pizzas.items.forEach((item) => {
-		cartData.push({
+	const cartData = useMemo(() => {
+		return pizzas.items.map((item) => ({
 			pizzaId: item.id,
 			name: item.name,
 			quantity: item.qty,
 			unitPrice: item.unitPrice,
 			totalPrice: item.qty * item.unitPrice,
-		});
-	});
+		}));
+	}, [pizzas.items]);
 
 	const {
 		register,
@@ -46,46 +43,40 @@ const OrderPage = () => {
 		resolver: yupResolver(schema),
 	});
 
-	useEffect(() => {
-		const sendOrder = async () => {
-			try {
-				const response = await fetch(
-					"https://react-fast-pizza-api.onrender.com/api/order",
-					{
-						method: "POST",
-						headers: {
-							"Content-Type": "application/json",
-						},
-						body: JSON.stringify({
-							...formData,
-							totalPrice: pizzas.totalPrice,
-							cart: cartData,
-						}),
-					}
-				);
-
-				const responseData = await response.json();
-
-				if (responseData.status === "fail") {
-					setFormError(responseData.message);
+	const sendOrder = async (data) => {
+		try {
+			const response = await fetch(
+				"https://react-fast-pizza-api.onrender.com/api/order",
+				{
+					method: "POST",
+					headers: {
+						"Content-Type": "application/json",
+					},
+					body: JSON.stringify({
+						...data,
+						totalPrice: pizzas.totalPrice,
+						cart: cartData,
+					}),
 				}
+			);
 
-				if (responseData.status === "success") {
-					dispatch(orderData(responseData.data));
-					navigate("/order/" + responseData.data.id);
-				}
-			} catch (error) {
-				setFormError(error.message);
+			const responseData = await response.json();
+
+			if (responseData.status === "fail") {
+				setFormError(responseData.message);
 			}
-		};
 
-		if (Object.keys(formData).length !== 0) {
-			sendOrder();
+			if (responseData.status === "success") {
+				dispatch(orderData(responseData.data));
+				navigate("/order/" + responseData.data.id);
+			}
+		} catch (error) {
+			setFormError(error.message);
 		}
-	}, [formData]);
+	};
 
 	const onSubmit = (data) => {
-		setFormData(data);
+		sendOrder(data);
 		reset();
 	};
 
